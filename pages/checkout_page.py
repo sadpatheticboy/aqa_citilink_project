@@ -66,4 +66,5 @@ class CheckoutPage(Base):
         self.input_last_name('Ivanov')
         self.input_phone('+79853134750')
         self.click_delivery_button()
+        self.take_screenshot()
         print('Step "Confirm Order" Completed Successfully\n')
