@@ -16,10 +16,13 @@ def test_link_jobs():
     path_chrome = Service(executable_path='D:/Necessary/QA/drivers/chromedriver.exe')
     driver = webdriver.Chrome(options=options, service=path_chrome)
 
-    print('\nStart Test')
+    print('\nStart Test\n')
 
     lp = LoginPage(driver)
     lp.authorization()
 
     mp = MainPage(driver)
     mp.open_link_jobs()
+
+    print('Test Successfuly Finished')
+    driver.quit()

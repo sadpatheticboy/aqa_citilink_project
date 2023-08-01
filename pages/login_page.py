@@ -57,4 +57,4 @@ class LoginPage(Base):
         self.input_password('@f6XB6soqB')
         self.click_login_button()
         self.assert_url_check('https://www.citilink.ru/?_action=login&_success_login=1')
-        print('Step Login Completed Successfully\n')
+        print('Step "Login" Completed Successfully\n')

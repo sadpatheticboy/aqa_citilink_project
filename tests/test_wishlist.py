@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
+from pages.wishlist_page import WishlistPage
 
 
 def test_search():
@@ -24,5 +25,8 @@ def test_search():
     mp = MainPage(driver)
     mp.search_product()
 
-    print('Test Successfuly FInished\n')
+    wp = WishlistPage(driver)
+    wp.clear_wishlist()
+
+    print('Test Successfuly Finished\n')
     driver.quit()

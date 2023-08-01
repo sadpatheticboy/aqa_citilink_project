@@ -15,9 +15,7 @@ class MainPage(Base):
     cookie_button = "//button[@class='e4uhfkv0 css-1jfe691 e4mggex0']"
     search_label = "//input[@name='text']"
     filter_by_price_button = "//button[@data-meta-value='price']"
-    filter_by_price_slider = ('/html/body/div[2]/div/main/div[1]/div/div[2]/section/div[1]/div/div/div/div[3]/div/'
-                              'div[3]/div[2]/div[3]/div/div[5]')
-    add_to_favorites_button = "//button[@class='etd7ecp0 app-catalog-11xrwzj e8hswel0']"
+    add_to_wishlist_button = "//button[@class='etd7ecp0 app-catalog-11xrwzj e8hswel0']"
     link_jobs_button = "/html/body/div[2]/div/main/div[2]/div/div[2]/div[2]/ul[3]/li[6]/a"
     county_button = "/html/body/div[2]/div/header/div[2]/div/div/div[2]/div[1]/button/div"
     country_samara = ("/html/body/div[9]/div/div/div/div/div[2]/div/div/div/div/div[2]/div/div[3]/div[2]/div[18]/ul/"
@@ -37,13 +35,9 @@ class MainPage(Base):
         return WebDriverWait(self.driver, 10).until(
             expected_conditions.element_to_be_clickable((By.XPATH, self.filter_by_price_button)))
 
-    def get_filter_by_price_slider(self):
+    def get_add_to_wishlist_button(self):
         return WebDriverWait(self.driver, 10).until(
-            expected_conditions.element_to_be_clickable((By.XPATH, self.filter_by_price_slider)))
-
-    def get_add_to_favorites_button(self):
-        return WebDriverWait(self.driver, 10).until(
-            expected_conditions.element_to_be_clickable((By.XPATH, self.add_to_favorites_button)))
+            expected_conditions.element_to_be_clickable((By.XPATH, self.add_to_wishlist_button)))
 
     def get_link_jobs_button(self):
         return WebDriverWait(self.driver, 10).until(
@@ -78,13 +72,8 @@ class MainPage(Base):
         self.get_filter_by_price().click()
         print('Pressed Filter The Price Button')
 
-    def slide_filter_by_price_slider(self):
-        action = ActionChains(self.driver)
-        slide = self.get_filter_by_price_slider()
-        action.click_and_hold(slide).move_by_offset(-500, 0).perform()
-
-    def click_add_to_favorites_button(self):
-        self.get_add_to_favorites_button().click()
+    def click_add_to_wishlist_button(self):
+        self.get_add_to_wishlist_button().click()
         print('Pressed Add To Favorite Button')
 
     def click_link_jobs_button(self):
@@ -106,20 +95,21 @@ class MainPage(Base):
         self.input_text('Процессор AMD Ryzen 9')
         self.start_search()
         self.click_filter_by_price_button()
-        self.get_filter_by_price_slider()
-        self.click_add_to_favorites_button()
-        print('Step Search Completed Successfully\n')
+        self.click_add_to_wishlist_button()
+        print('Step "Search" Completed Successfully\n')
 
     def open_link_jobs(self):
-        print('[Step Link "jobs"]')
+        print('[Step "Link jobs"]')
         self.click_cookie_button()
         self.click_link_jobs_button()
         self.assert_url_check('https://job.citilink.ru/')
-        print('Step Link "Jobs" Completed Successfully\n')
+        self.take_screenshot()
+        print('Step "Link Jobs" Completed Successfully\n')
 
     def change_country(self):
-        print('[Step Change Country]')
+        print('[Step "Change Country"]')
         self.click_country_button()
         self.choose_country_samara()
         self.assert_word_check(self.get_word_country(), 'Самара')
-        print('Step Change Country Completed Successfully\n')
+        self.take_screenshot()
+        print('Step "Change Country" Completed Successfully\n')
