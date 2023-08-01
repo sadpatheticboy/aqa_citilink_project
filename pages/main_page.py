@@ -21,6 +21,7 @@ class MainPage(Base):
     country_samara = ("/html/body/div[9]/div/div/div/div/div[2]/div/div/div/div/div[2]/div/div[3]/div[2]/div[18]/ul/"
                       "li[3]/a")
     word_country = "/html/body/div[2]/div/header/div[2]/div/div/div[2]/div[1]/button/span/span"
+    cart_button = "/html/body/div[2]/div/div[3]/div/div[2]/div/div/div[2]/div[2]/a[2]/div/div"
 
     # Getters
     def get_cookie_button(self):
@@ -55,6 +56,10 @@ class MainPage(Base):
         return WebDriverWait(self.driver, 10).until(
             expected_conditions.element_to_be_clickable((By.XPATH, self.word_country)))
 
+    def get_cart_button(self):
+        return WebDriverWait(self.driver, 10).until(
+            expected_conditions.element_to_be_clickable((By.XPATH, self.cart_button)))
+
     # Actions
     def click_cookie_button(self):
         self.get_cookie_button().click()
@@ -86,17 +91,21 @@ class MainPage(Base):
 
     def choose_country_samara(self):
         self.get_county_samara().click()
-        print('Choose Camara')
+        print('Choose Samara')
+
+    def click_cart_button(self):
+        self.get_cart_button().click()
+        print('Clicked Cart Button')
 
     # Methods
     def search_product(self):
-        print('[Step "Search"]')
+        print('[Step "Search Product"]')
         self.get_current_url()
         self.input_text('Процессор AMD Ryzen 9')
         self.start_search()
         self.click_filter_by_price_button()
         self.click_add_to_wishlist_button()
-        print('Step "Search" Completed Successfully\n')
+        print('Step "Search Product" Completed Successfully\n')
 
     def open_link_jobs(self):
         print('[Step "Link jobs"]')

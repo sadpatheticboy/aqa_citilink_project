@@ -5,7 +5,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
 
-def test_link_jobs():
+def test_change_country():
     # Подключение к Chrome
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
