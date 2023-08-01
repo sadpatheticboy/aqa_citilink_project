@@ -15,11 +15,11 @@ class Base:
         get_url = self.driver.current_url
         assert get_url == result
 
-    # # Method Assert Word Check
-    # def assert_word_check(self, word, result):
-    #     value_word = word.text
-    #     assert value_word == result
-    #     print('All Correct')
+    # Method Assert Word Check
+    def assert_word_check(self, word, result):
+        value_word = word.text
+        assert value_word == result
+        print('All Correct')
 
     # Method Screenshot
     def take_screenshot(self):

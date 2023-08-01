@@ -19,7 +19,10 @@ class MainPage(Base):
                               'div[3]/div[2]/div[3]/div/div[5]')
     add_to_favorites_button = "//button[@class='etd7ecp0 app-catalog-11xrwzj e8hswel0']"
     link_jobs_button = "/html/body/div[2]/div/main/div[2]/div/div[2]/div[2]/ul[3]/li[6]/a"
-    county_button = "//button[@class='e1x3msk40 css-wsr9k9 etyxved0']"
+    county_button = "/html/body/div[2]/div/header/div[2]/div/div/div[2]/div[1]/button/div"
+    country_samara = ("/html/body/div[9]/div/div/div/div/div[2]/div/div/div/div/div[2]/div/div[3]/div[2]/div[18]/ul/"
+                      "li[3]/a")
+    word_country = "/html/body/div[2]/div/header/div[2]/div/div/div[2]/div[1]/button/span/span"
 
     # Getters
     def get_cookie_button(self):
@@ -49,6 +52,14 @@ class MainPage(Base):
     def get_county_button(self):
         return WebDriverWait(self.driver, 10).until(
             expected_conditions.element_to_be_clickable((By.XPATH, self.county_button)))
+
+    def get_county_samara(self):
+        return WebDriverWait(self.driver, 10).until(
+            expected_conditions.element_to_be_clickable((By.XPATH, self.country_samara)))
+
+    def get_word_country(self):
+        return WebDriverWait(self.driver, 10).until(
+            expected_conditions.element_to_be_clickable((By.XPATH, self.word_country)))
 
     # Actions
     def click_cookie_button(self):
@@ -80,6 +91,14 @@ class MainPage(Base):
         self.get_link_jobs_button().click()
         print('Clicked Link Jobs Button')
 
+    def click_country_button(self):
+        self.get_county_button().click()
+        print('Clicked Country Button')
+
+    def choose_country_samara(self):
+        self.get_county_samara().click()
+        print('Choose Camara')
+
     # Methods
     def search_product(self):
         print('[Step "Search"]')
@@ -97,3 +116,10 @@ class MainPage(Base):
         self.click_link_jobs_button()
         self.assert_url_check('https://job.citilink.ru/')
         print('Step Link "Jobs" Completed Successfully\n')
+
+    def change_country(self):
+        print('[Step Change Country]')
+        self.click_country_button()
+        self.choose_country_samara()
+        self.assert_word_check(self.get_word_country(), 'Самара')
+        print('Step Change Country Completed Successfully\n')
