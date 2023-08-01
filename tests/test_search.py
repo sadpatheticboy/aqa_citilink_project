@@ -24,5 +24,5 @@ def test_search():
     mp = MainPage(driver)
     mp.search_product()
 
-    print('Test Successfuly FInished\n')
+    print('Test Successfuly Finished\n')
     driver.quit()

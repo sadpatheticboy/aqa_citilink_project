@@ -5,7 +5,6 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.wishlist_page import WishlistPage
 from pages.cart_page import CartPage
-from pages.checkout_page import CheckoutPage
 
 
 def test_clear_cart():
@@ -31,10 +30,7 @@ def test_clear_cart():
     wp.add_wishlist_to_cart()
 
     cp = CartPage(driver)
-    cp.go_to_checkout()
+    cp.clear_cart()
 
-    chechoutp = CheckoutPage(driver)
-    chechoutp.confirm_order()
-
-    print('Test Successfuly FInished\n')
-    # driver.quit()
+    print('Test Successfuly Finished\n')
+    driver.quit()

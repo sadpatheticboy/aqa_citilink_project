@@ -54,5 +54,5 @@ def test_add_to_cart_from_wishlist():
     wp = WishlistPage(driver)
     wp.add_wishlist_to_cart()
 
-    print('Test Successfuly FInished\n')
+    print('Test Successfuly Finished\n')
     driver.quit()
