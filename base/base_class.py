@@ -13,18 +13,13 @@ class Base:
     # Method Assert Url Check
     def assert_url_check(self, result):
         get_url = self.driver.current_url
-        print(get_url)
-        print(result)
         assert get_url == result
 
-    #
     # # Method Assert Word Check
     # def assert_word_check(self, word, result):
     #     value_word = word.text
     #     assert value_word == result
     #     print('All Correct')
-    #
-    #
 
     # Method Screenshot
     def take_screenshot(self):
